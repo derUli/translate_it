@@ -2,7 +2,7 @@
 $translations = ViewBag::get ( "translations" );
 ?>
 <form
-	action="<?php echo ModuleHelper::buildActionURL("get_language_file")?>"
+	action="<?php echo ModuleHelper::buildAdminURL($module, "sClass=TranslateIt&sMethod=downloadFile");?>"
 	method="post">
 	<?php csrf_token_html();?>
 	<div class="scroll">
@@ -26,14 +26,14 @@ $translations = ViewBag::get ( "translations" );
 	</div>
 	<div class="row">
 		<div class="col-xs-8">
-
 			<div class="row">
 				<div class="col-xs-4">
 					<strong><?php translate("language_code");?></strong>
 				</div>
 
 				<div class="col-xs-8">
-					<input type="text" name="language_code" required value="">
+					<input type="text" name="language_code" required
+						value="<?php Template::escape(getCurrentLanguage());?>">
 				</div>
 			</div>
 		</div>
