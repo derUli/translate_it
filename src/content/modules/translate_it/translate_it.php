@@ -2,6 +2,10 @@
 class TranslateIt extends Controller {
 	private $moduleName = "translate_it";
 	public function downloadFile() {
+		$acl = new ACL ();
+		if (! $acl->hasPermission ( $this->moduleName )) {
+			exit ();
+		}
 		$code = "<?php\r\n";
 		foreach ( $_POST as $key => $value ) {
 			if (startsWith ( $key, "TRANSLATION_" )) {
@@ -10,10 +14,13 @@ class TranslateIt extends Controller {
 				$code .= "define ( \"$mykey\", \"$myvalue\" );\r\n";
 			}
 		}
+		$language_code = Request::getVar ( "language_code", getCurrentLanguage () );
+		$code .= "\r\n";
+		$code .= "add_hook ( \"lang_" . str_replace ( "\"", "\\\"", $language_code ) . "\" );\r\n";
+		
 		header ( 'Content-Description: Language File' );
 		header ( 'Content-Type: application/octet-stream' );
-		$file = Request::getVar ( "language_code", getCurrentLanguage () );
-		$file = basename ( $file ) . ".php";
+		$file = basename ( $language_code ) . ".php";
 		header ( 'Content-Disposition: attachment; filename="' . $file . '"' );
 		header ( 'Expires: 0' );
 		header ( 'Cache-Control: must-revalidate' );
