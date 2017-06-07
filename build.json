@@ -1,0 +1,7 @@
+{
+   "id" : "translate_it",
+   "version" : "0.1",
+   "description" : "Generate language files for UliCMS",
+   "categories" : ["translation", "language", "localisation"],
+   "compatible_from" : "2017.1"
+}
