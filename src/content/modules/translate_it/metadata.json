@@ -1,11 +1,11 @@
 {
-	"source" : "extend",
-	"version" : "0.1",
-	"embed" : false,
-	"controllers" : {
-		"TranslateIt" : "translate_it.php"
-	},
-	"main_class" : "TranslateIt",
-	"custom_acl" : ["translate_it"],
-	"admin_permission" : "translate_it"
+    "source": "extend",
+    "version": "0.2",
+    "embed": false,
+    "controllers": {
+        "TranslateItController": "TranslateItController.php"
+    },
+    "main_class": "TranslateItController",
+    "custom_acl": ["translate_it"],
+    "admin_permission": "translate_it"
 }

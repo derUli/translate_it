@@ -1,0 +1,5 @@
+<?php
+define ( "TRANSLATION_FOOBAR", "Foo Bar" );
+define ( "TRANSLATION_HELLO_WORLD", "Hello World" );
+
+do_event ( "lang_fr" );

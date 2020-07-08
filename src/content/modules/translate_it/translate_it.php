@@ -16,7 +16,7 @@ class TranslateIt extends Controller {
 		}
 		$language_code = Request::getVar ( "language_code", getCurrentLanguage () );
 		$code .= "\r\n";
-		$code .= "add_hook ( \"lang_" . str_replace ( "\"", "\\\"", $language_code ) . "\" );\r\n";
+		$code .= "do_event ( \"lang_" . str_replace ( "\"", "\\\"", $language_code ) . "\" );\r\n";
 		
 		header ( 'Content-Description: Language File' );
 		header ( 'Content-Type: application/octet-stream' );
